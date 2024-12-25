@@ -4,5 +4,5 @@
     <a href="./students.php">Students</a>
     <a href="./register.php">Register</a>
     <button class="btn btn-send-balance w-100 mt-4" onclick="sendBalance()">Send Balance</button>
-    <a href="../logout.php">Logout</a>
+    <a href="./logout.php">Logout</a>
 </div>

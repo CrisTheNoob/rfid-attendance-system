@@ -25,9 +25,35 @@ if (!isset($_SESSION['user_id'])) {
         .overview-box.present { border-left: 5px solid #28a745; }
         .overview-box.absent { border-left: 5px solid #dc3545; }
         .overview-box.total { border-left: 5px solid #007bff; }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .spinner-border {
+            width: 4rem;
+            height: 4rem;
+            border-width: 0.4rem;
+        }
     </style>
 </head>
 <body>
+        <!-- Preloader -->
+        <div id="preloader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar Toggle Button for Small Screens -->
@@ -46,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="col-md-4">
                         <div class="overview-box present">
                             <h3>Present</h3>
-                            <p>120</p> <!-- Replace with dynamic data -->
+                            <p>0</p> <!-- Replace with dynamic data -->
                         </div>
                     </div>
 
@@ -54,7 +80,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="col-md-4">
                         <div class="overview-box absent">
                             <h3>Absent</h3>
-                            <p>30</p> <!-- Replace with dynamic data -->
+                            <p>0</p> <!-- Replace with dynamic data -->
                         </div>
                     </div>
 
@@ -62,7 +88,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="col-md-4">
                         <div class="overview-box total">
                             <h3>Total Students</h3>
-                            <p>150</p> <!-- Replace with dynamic data -->
+                            <p>0</p> <!-- Replace with dynamic data -->
                         </div>
                     </div>
                 </div>
@@ -148,6 +174,13 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+                // Preloader Script
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+
+
         const viewStudentModal = document.getElementById('viewStudentModal');
         viewStudentModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
